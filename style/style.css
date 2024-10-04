@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+#contenido {
+    margin: 80px auto;
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgb(0, 0, 0, 0.9);
+    border-radius: 10px;
+}
+
+h1, h2, h4 {
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input {
+    margin: 10px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.lista {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fafafa;
+    margin-bottom: 10px;
+}
+
+.tareas {
+    margin-top: 10px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px 0; /* Márgenes consistentes */
+}
+
+button:hover {
+    background-color: #0056b3;
+    border: 1px solid black;
+}
+
+.contenedores {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    box-shadow: rgba(0, 0, 0, 0.838);
+    background-color: #91c4fa;
+    border-radius: 10px;
+}
+
+.contenedores span {
+    flex-grow: 1;
+}
+
+#contenedorTareas input[type="text"] {
+    flex-grow: 1; /* Para que el campo de texto ocupe el espacio disponible */
+    margin-right: 10px; /* Espacio entre el campo de texto y los botones */
+}
+
+.form-text {
+    font-size: 0.9em;
+    color: #666;
+}
+#cita{
+    font-size: 2.2em;
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px  rgba(185, 209, 0, 0.9);
+
+}
+
