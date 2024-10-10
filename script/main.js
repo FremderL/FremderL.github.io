@@ -15,12 +15,12 @@ function mostrarCrearLista() {
     document.getElementById('crear-lista').style.display = 'block';
     document.getElementById('listas').style.display = 'none';
     document.getElementById('tareas').style.display = 'none';
-    document.getElementById('crear-tarea').style.display = 'none'; // Asegura que la sección de tareas esté oculta
+    document.getElementById('crear-tarea').style.display = 'none';
 }
 
 function mostrarCrearTarea() {
     document.getElementById('crear-tarea').style.display = 'block';
-    document.getElementById('contenedorTareas').style.display = 'none'; // Ocultar tareas mientras se crea una nueva
+    document.getElementById('contenedorTareas').style.display = 'none';
 }
 
 function cargarListas() {
@@ -33,7 +33,7 @@ function cargarListas() {
         divLista.className = 'lista';
         divLista.innerHTML = `
             <h3>
-                <span id="nombreLista-${lista}" onclick="cargarTareas('${lista}'); cancelMenu('${lista}')">${lista}</span>
+                <span id="nombreLista-${lista}" onclick="cargarTareas('${lista}'); cerrarMenu()">${lista}</span>
                 <button onclick="toggleMenu('${lista}')">⋮</button>
                 <div id="menu-${lista}" style="display: none;">
                     <button onclick="seleccionarOpcion('${lista}', 'editar')">Editar</button>
@@ -101,23 +101,20 @@ function mostrarNotificacion(mensaje) {
 
 function seleccionarOpcion(lista, accion) {
     if (accion === 'editar') {
-        // Implementa la lógica de edición si es necesario
         alert('Función de edición no implementada.');
     } else if (accion === 'borrar') {
         localStorage.removeItem(lista);
         mostrarNotificacion(`Lista "${lista}" eliminada.`);
         cargarListas();
-        cancelMenu(lista);
+        cancelarMenu(lista);
     }
 }
 
 function toggleMenu(lista) {
     const menu = document.getElementById(`menu-${lista}`);
     const isVisible = menu.style.display === 'block';
-    // Cierra todos los menús
     const todosMenus = document.querySelectorAll('.offcanvas-body div');
     todosMenus.forEach(m => m.style.display = 'none');
-    // Abre el menú solo si estaba cerrado
     if (!isVisible) {
         menu.style.display = 'block';
     }
@@ -126,4 +123,10 @@ function toggleMenu(lista) {
 function cancelarMenu(lista) {
     const menu = document.getElementById(`menu-${lista}`);
     menu.style.display = 'none';
+}
+
+function cerrarMenu() {
+    const offcanvas = document.querySelector('.offcanvas');
+    const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvas);
+    bsOffcanvas.hide();
 }
