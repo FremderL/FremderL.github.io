@@ -33,8 +33,8 @@ function cargarListas() {
         divLista.className = 'lista';
         divLista.innerHTML = `
             <h3>
-                <span id="nombreLista-${lista}" onclick="cargarTareas('${lista}')">${lista}</span>
-                <button onclick="toggleMenu('${lista}')">⋮</button>
+                <span id="nombreLista-${lista}" onclick="cargarTareas('${lista}')" aria-role="button" tabindex="0">${lista}</span>
+                <button onclick="toggleMenu('${lista}')" aria-expanded="false">⋮</button>
                 <div id="menu-${lista}" style="display: none;">
                     <button onclick="editarLista('${lista}')">Editar</button>
                     <button onclick="borrarLista('${lista}')">Borrar</button>
@@ -49,13 +49,24 @@ function cargarListas() {
 function crearLista() {
     const nombreLista = document.getElementById('nombreLista').value.trim();
     if (nombreLista === '' || localStorage.getItem(nombreLista)) {
-        alert('Por favor, ingresa un nombre único para la lista.');
+        mostrarNotificacion('Por favor, ingresa un nombre único para la lista.', 'alert-danger');
         return;
     }
     localStorage.setItem(nombreLista, JSON.stringify([]));
     document.getElementById('nombreLista').value = '';
     cargarListas();
     mostrarHome();
+    mostrarNotificacion('Lista creada con éxito.', 'alert-success');
+}
+
+function mostrarNotificacion(mensaje, clase) {
+    const notificacion = document.getElementById('notificacion');
+    notificacion.innerText = mensaje;
+    notificacion.className = `alert ${clase}`;
+    notificacion.style.display = 'block';
+    setTimeout(() => {
+        notificacion.style.display = 'none';
+    }, 3000);
 }
 
 function toggleMenu(lista) {
@@ -72,13 +83,14 @@ function borrarLista(nombreLista) {
     if (confirm(`¿Estás seguro de que deseas borrar la lista "${nombreLista}"?`)) {
         localStorage.removeItem(nombreLista);
         cargarListas();
+        mostrarNotificacion(`Lista "${nombreLista}" eliminada.`, 'alert-warning');
     }
 }
 
 function editarLista(nombreActual) {
     const divLista = document.getElementById(`nombreLista-${nombreActual}`).parentElement;
     divLista.innerHTML = `
-        <input type="text" id="nuevoNombreLista" value="${nombreActual}" />
+        <input type="text" id="nuevoNombreLista" value="${nombreActual}" maxlength="20" />
         <button onclick="guardarEdicionLista('${nombreActual}')">Guardar</button>
         <button onclick="cancelarEdicionLista('${nombreActual}')">Cancelar</button>
     `;
@@ -87,13 +99,14 @@ function editarLista(nombreActual) {
 function guardarEdicionLista(nombreActual) {
     const nuevoNombre = document.getElementById('nuevoNombreLista').value.trim();
     if (nuevoNombre === '' || localStorage.getItem(nuevoNombre)) {
-        alert('Por favor, ingresa un nombre único para la lista.');
+        mostrarNotificacion('Por favor, ingresa un nombre único para la lista.', 'alert-danger');
         return;
     }
     const tareas = localStorage.getItem(nombreActual);
     localStorage.removeItem(nombreActual);
     localStorage.setItem(nuevoNombre, tareas);
     cargarListas();
+    mostrarNotificacion('Lista editada con éxito.', 'alert-success');
 }
 
 function cancelarEdicionLista(nombreActual) {
@@ -128,14 +141,14 @@ function agregarTarea() {
     const fechaEntrega = document.getElementById('fechaEntrega').value;
 
     if (nuevaTarea === '') {
-        alert('Por favor, ingresa una tarea.');
+        mostrarNotificacion('Por favor, ingresa una tarea.', 'alert-danger');
         return;
     }
 
     let tareas = JSON.parse(localStorage.getItem(lista)) || [];
     const tareaExistente = tareas.some(tarea => tarea.texto === nuevaTarea);
     if (tareaExistente) {
-        alert('Esta tarea ya existe en la lista.');
+        mostrarNotificacion('Esta tarea ya existe en la lista.', 'alert-danger');
         return;
     }
 
@@ -144,6 +157,7 @@ function agregarTarea() {
     cargarTareas(lista);
     document.getElementById('nuevaTarea').value = '';
     document.getElementById('fechaEntrega').value = '';
+    mostrarNotificacion('Tarea agregada con éxito.', 'alert-success');
 }
 
 function borrarTarea(lista, index) {
@@ -151,6 +165,7 @@ function borrarTarea(lista, index) {
     tareas.splice(index, 1);
     localStorage.setItem(lista, JSON.stringify(tareas));
     cargarTareas(lista);
+    mostrarNotificacion('Tarea eliminada.', 'alert-warning');
 }
 
 function editarTarea(lista, index) {
@@ -161,7 +176,7 @@ function editarTarea(lista, index) {
     const divTarea = contenedorTareas.children[index];
 
     divTarea.innerHTML = `
-        <input type="text" value="${tareaActual.texto}" id="editTarea-${index}" />
+        <input type="text" value="${tareaActual.texto}" id="editTarea-${index}" maxlength="150" />
         <button onclick="guardarEdicion('${lista}', ${index})">Guardar</button>
         <button onclick="cancelarEdicion('${lista}', ${index}, '${tareaActual.texto}')">Cancelar</button>
     `;
@@ -170,16 +185,16 @@ function editarTarea(lista, index) {
 function guardarEdicion(lista, index) {
     const nuevaTareaTexto = document.getElementById(`editTarea-${index}`).value.trim();
     if (nuevaTareaTexto === '') {
-        alert('Por favor, ingresa un texto válido.');
+        mostrarNotificacion('Por favor, ingresa un texto válido.', 'alert-danger');
         return;
     }
 
     let tareas = JSON.parse(localStorage.getItem(lista));
-    
+
     // Verificar si la nueva tarea ya existe (exceptuando la que se está editando)
     const tareaExistente = tareas.some((tarea, i) => tarea.texto === nuevaTareaTexto && i !== index);
     if (tareaExistente) {
-        alert('Esta tarea ya existe en la lista.');
+        mostrarNotificacion('Esta tarea ya existe en la lista.', 'alert-danger');
         return;
     }
 
@@ -187,6 +202,7 @@ function guardarEdicion(lista, index) {
     tareas[index].texto = nuevaTareaTexto;
     localStorage.setItem(lista, JSON.stringify(tareas));
     cargarTareas(lista);
+    mostrarNotificacion('Tarea editada con éxito.', 'alert-success');
 }
 
 function cancelarEdicion(lista, index, tareaTexto) {
