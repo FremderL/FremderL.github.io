@@ -11,7 +11,7 @@ body {
     max-width: 800px;
     padding: 20px;
     background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 2px 5px rgb(0, 0, 0, 0.9);
     border-radius: 10px;
 }
 
@@ -34,7 +34,6 @@ form input {
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    width: 100%; /* Asegura que el campo ocupe el ancho del contenedor */
 }
 
 .lista {
@@ -43,7 +42,6 @@ form input {
     border-radius: 5px;
     background-color: #fafafa;
     margin-bottom: 10px;
-    word-wrap: break-word; /* Permite que las tareas largas se ajusten */
 }
 
 .tareas {
@@ -58,7 +56,7 @@ button {
     padding: 10px;
     cursor: pointer;
     font-size: 16px;
-    margin: 5px 0; /* Márgenes consistentes */
+    margin: 5px 0;
 }
 
 button:hover {
@@ -76,7 +74,9 @@ button:hover {
     box-shadow: rgba(0, 0, 0, 0.838);
     background-color: #91c4fa;
     border-radius: 10px;
-    overflow-wrap: break-word; /* Asegura que el texto largo se ajuste */
+    word-wrap: break-word; /* Ajustar texto */
+    overflow-wrap: break-word; /* Compatibilidad */
+    max-width: 100%; /* No exceder el contenedor */
 }
 
 .contenedores span {
@@ -84,7 +84,7 @@ button:hover {
 }
 
 #contenedorTareas input[type="text"] {
-    flex-grow: 1; /* Para que el campo de texto ocupe el espacio disponible */
+    flex-grow: 1; /* Campo de texto ocupa espacio disponible */
     margin-right: 10px; /* Espacio entre el campo de texto y los botones */
 }
 
@@ -97,4 +97,8 @@ button:hover {
     font-size: 2.2em;
     border: 1px solid black;
     box-shadow: 2px 2px 2px rgba(185, 209, 0, 0.9);
+}
+
+.alert {
+    margin-top: 10px;
 }
