@@ -11,7 +11,7 @@ body {
     max-width: 800px;
     padding: 20px;
     background-color: #fff;
-    box-shadow: 0 2px 5px rgb(0, 0, 0, 0.9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
     border-radius: 10px;
 }
 
@@ -61,7 +61,6 @@ button {
 
 button:hover {
     background-color: #0056b3;
-    border: 1px solid black;
 }
 
 .contenedores {
@@ -74,9 +73,7 @@ button:hover {
     box-shadow: rgba(0, 0, 0, 0.838);
     background-color: #91c4fa;
     border-radius: 10px;
-    word-wrap: break-word; /* Ajustar texto */
-    overflow-wrap: break-word; /* Compatibilidad */
-    max-width: 100%; /* No exceder el contenedor */
+    word-wrap: break-word;
 }
 
 .contenedores span {
@@ -84,8 +81,8 @@ button:hover {
 }
 
 #contenedorTareas input[type="text"] {
-    flex-grow: 1; /* Campo de texto ocupa espacio disponible */
-    margin-right: 10px; /* Espacio entre el campo de texto y los botones */
+    flex-grow: 1;
+    margin-right: 10px;
 }
 
 .form-text {
@@ -102,3 +99,4 @@ button:hover {
 .alert {
     margin-top: 10px;
 }
+ 
