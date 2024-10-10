@@ -23,10 +23,10 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#" onclick="mostrarHome()">Home</a>
+                            <a class="nav-link active" aria-current="page" href="#" onclick="mostrarHome(); cerrarMenu()">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="mostrarCrearLista()">Crear Nueva Lista+</a>
+                            <a class="nav-link" href="#" onclick="mostrarCrearLista(); cerrarMenu()">Crear Nueva Lista+</a>
                         </li>
                     </ul>
                 </div>
@@ -36,8 +36,7 @@
 
     <main id="contenido" class="mt-5">
         <header>
-            <h1 id="cita">"Siempre parece imposible hasta que se hace"  
-            Nelson Mandela.</h1>
+            <h1 id="cita">"Siempre parece imposible hasta que se hace" - Nelson Mandela.</h1>
             <div id="notificacion" class="alert" style="display: none;"></div>
             <hr>
         </header>
