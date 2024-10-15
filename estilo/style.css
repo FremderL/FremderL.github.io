@@ -1,0 +1,170 @@
+/* Estilo para el contenedor principal */
+.contenedor {
+    margin: auto;
+    width: 400px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-image: linear-gradient(175deg, #ff6aff 0, #ff67ff 12.5%, #ff63ff 25%, #ed5cff 37.5%, #bc53f2 50%, #8c49db 62.5%, #5f40c5 75%, #2d38b0 87.5%, #00329e 100%);
+    padding: 20px;
+    color: white;
+}
+
+/* Estilo para los contenedores de tareas */
+.contenedores {
+    border: 1px solid black;
+    border-radius: 8px;
+    color: white; 
+    margin: 10px 0; /* Añadido margen vertical para separación */
+    padding: 10px;
+    overflow: hidden; /* Evita desbordamientos */
+    word-wrap: break-word; /* Rompe el texto largo para ajustarlo en el contenedor */
+}
+
+/* Estilo del fondo de la página */
+body {
+    background-image: url(https://images.unsplash.com/photo-1663970206579-c157cba7edda?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9uZG8lMjBkZSUyMHBhbnRhbGxhJTIwcGFyYSUyMHBjfGVufDB8fDB8fHww);
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* Estilo del campo de nueva tarea */
+#nuevaTarea {
+    background: transparent;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    width: calc(100% - 80px); /* Ajusta el ancho del input para dejar espacio al botón */
+    box-sizing: border-box;
+    color: white;
+}
+
+/* Estilo del botón de agregar tarea */
+#mas {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#mas:hover {
+    background-color: darkgreen;
+}
+
+/* Estilo para el botón de borrar */
+.borrar {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.borrar:hover {
+    background-color: darkred;
+}
+
+/* Estilo de los botones en general */
+button {
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    /* Para pantallas pequeñas (tabletas) */
+    .contenedor {
+        width: 95%;
+    }
+
+    #nuevaTarea {
+        width: calc(100% - 90px); /* Ajusta el ancho del input */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Para pantallas muy pequeñas (teléfonos) */
+    .contenedor {
+        padding: 10px;
+    }
+
+    #nuevaTarea {
+        width: calc(100% - 80px); /* Ajusta el ancho del input */
+    }
+
+    #mas {
+        padding: 8px 12px; /* Ajusta el tamaño del botón */
+        font-size: 14px; /* Ajusta el tamaño del texto en el botón */
+    }
+}
+
+/* Estilo para el campo de edición de tarea */
+.editar-tarea {
+    display: block;
+    margin: 5px 0;
+    width: calc(100% - 70px); /* Ajusta el ancho para el campo de edición */
+    box-sizing: border-box;
+}
+
+/* Botón de guardar */
+.boton-guardar {
+    margin-left: 5px;
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.boton-guardar:hover {
+    background-color: #45a049; /* Verde más oscuro */
+}
+
+/* Botón de cancelar */
+.boton-cancelar {
+    margin-left: 5px;
+    background-color: #f44336; /* Rojo */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.boton-cancelar:hover {
+    background-color: #e60000; /* Rojo más oscuro */
+}
+
+/* Estilo para el botón de editar */
+.editar {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.editar:hover {
+    background-color: #45a049; /* Verde más oscuro */
+}
+
+#titulo {
+    color: white;
+}
