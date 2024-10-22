@@ -4,7 +4,7 @@ const urlsToCache = [
   '/index.html',
   '/estilo/style.css',
   '/script/main.js',
-  '//imagen/icon-192x192.png',
+  '/imagen/icon-192x192.png',
   '/imagen/icon-512x512.png',
   'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
   'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js'
